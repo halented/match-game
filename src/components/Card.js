@@ -5,7 +5,7 @@ class Card extends Component {
         return (
             <div className='card' 
             id={this.props.num} style={{backgroundColor: 'black'}}  
-            onClick={() => this.props.flip(this.props.num)}></div>
+            onClick={() => this.props.flip(this.props.num, this.props.color)}></div>
         )
     }
 }
