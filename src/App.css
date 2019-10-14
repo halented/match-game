@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   display: grid;
-  grid-template: repeat(4, 1fr)/ repeat(3, 1fr);
+  grid-template: repeat(4, 1fr)/ repeat(4, 1fr);
   height: 100vh;
 }
 
@@ -28,4 +28,15 @@
 
 .card {
   margin: 1%;
+}
+
+#clickin {
+  margin: auto;
+  grid-row: 2/4;
+  grid-column: 2/4;
+  font-style: oblique;
+}
+
+#clickin:hover {
+  cursor: pointer;
 }

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import Card from './components/Card'
+import Card from './components/Card';
+import ClickIn from './ClickIn';
 import './App.css';
 
 class App extends Component {
   state = {
     colors: ["skyblue", "red", "teal", "yellow", "darkorange", "aquamarine", "springgreen", "purple", "pink", "coral"],
-    cardHash: {1: '',2: '',3: '',4: '',5: '',6: '',7: '',8: '',9: ''},
-    flippedCards: []
+    cardHash: {1: '',2: '',3: '',4: '',5: '',6: '',7: '',8: '',9: '', 10:'',11: '',12: ''},
+    flippedCards: [],
+    started: false
+  }
+
+  start = () => {
+    console.log("got there")
+    this.setState({started: true})
   }
 
   flip = (id, color) => {
@@ -15,7 +22,7 @@ class App extends Component {
       el.style.backgroundColor = color
       let newArr = this.state.flippedCards.slice()
       newArr.push(id)
-      this.setState({flippedCards: newArr, cardHash: newHash})
+      this.setState({flippedCards: newArr})
       this.checkMatch(id)
     }
     else {
@@ -46,18 +53,19 @@ class App extends Component {
     console.log("inside matchedPair")
     let todo = this.state.flippedCards
     console.log(todo)
-    debugger;
   }
-
 
   render() {
     return (
       <div className="App">
-        {/* {Object.keys(this.state.cardHash).map(num=>{
-          return <Card num={num} color={this.state.colors[Math.floor(Math.random()*9)]} flip={this.flip}/>
-        })} */}
-        <h1>match 'em</h1>
-      </div>
+        {this.state.started?
+        Object.keys(this.state.cardHash).map(num=>{
+          return <Card num={num} color={this.state.cardHash[num]}flip={this.flip}/>
+        })
+        :
+        <ClickIn start={this.start}/>
+        }
+        </div>
     );
   }
 }
